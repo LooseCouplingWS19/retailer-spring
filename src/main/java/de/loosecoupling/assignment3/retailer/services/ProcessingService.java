@@ -1,7 +1,5 @@
 package de.loosecoupling.assignment3.retailer.services;
 
-import java.util.concurrent.TimeUnit;
-
 import javax.jms.JMSException;
 import javax.jms.StreamMessage;
 
@@ -30,13 +28,6 @@ public class ProcessingService {
 		LOG.info("Product Name: " + productName);
 		LOG.info("New Price: " + newPrice);
 		LOG.info("Old Price: " + oldPrice);
-		
-		try {
-			TimeUnit.SECONDS.sleep(30);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
 		if (newPrice / oldPrice <= 0.9) {
             LOG.info("-> Good price! Order 1000 items!");
