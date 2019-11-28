@@ -1,5 +1,6 @@
 package de.loosecoupling.assignment3.retailer.messaging;
 
+import javax.jms.DeliveryMode;
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.MessageProducer;
@@ -15,6 +16,8 @@ public class ProducerFactory {
 	TopicSession activeMQSession;
 
 	public MessageProducer createProducer(Destination destination) throws JMSException {
-		return activeMQSession.createProducer(destination);
+		MessageProducer producer = activeMQSession.createProducer(destination);
+		producer.setDeliveryMode(DeliveryMode.PERSISTENT);
+		return producer;
 	}
 }
